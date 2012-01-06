@@ -1,0 +1,44 @@
+<p>
+  Article Name: 
+  <b><%= @article.name %></b>
+</p>
+
+<p>
+  Topic: 
+  <b><%= @article.topic %></b>
+</p>
+
+<p>
+  Description: 
+  <b><%= @article.description %></b>
+</p>
+<div id ="notice">
+  
+</div>
+
+<%#*<div id="comments_count">%>
+<%#= pluralize(@article.comments.size, 'comment') %>
+<%#*</div>%>
+
+
+<div id ="comment">
+<%=  render :partial => "comments/comment", :collection => @article.comments %>
+</div>
+
+
+<%= form_for(@comment, :url => user_article_comments_path(@user,@article), :remote => true) do |f| %>
+
+  <div class ="field">
+    <%= f.label :comment %><br/>
+    <%= f.text_area :comment, :cols => "60", :rows => "10" %>
+  </div>
+
+  <div class="action">
+    <%= f.submit 'Post Comment' %>
+  </div>
+
+<%end%>
+
+<%#*<div id="comments">%>
+<%#= render :partial => "comments/comment" %>
+<%#*</div>%>

@@ -1,0 +1,38 @@
+Welcome to My Project
+
+<br/>
+<%= link_to "singin", login_path %> |
+<%= link_to "signup", signup_path %> |
+<%= link_to "logout", logout_path %>
+<br/>
+
+<table width="60%" border="1" >
+  <tr align ="center">
+    <td width ="100px"> User </td>
+    <td> Article Name </td>
+    <td> Topic </td>
+    <td width ="50px"> Rate </td>
+  </tr>
+</table>
+<table width="60%" border ="1">
+  <% @article.each do |article| %>
+    <% if article.published == true %>
+      <tr>
+        <td width ="100px">
+          <%= link_to image_tag(article.user.avatar.url(:thumb)), :style => "width=100px" %>
+        </td>
+        <td>
+          <%= link_to article.name, view_article_path(article.user_id, article.id) %>
+        </td>
+        <td>
+          <%= article.topic %>
+        </td>
+        <td width ="50px">
+          <%= article.rate %>
+        </td>
+      </tr>
+    <%end%>
+  <%end%>
+</table>
+
+<div id="recent_episodes">

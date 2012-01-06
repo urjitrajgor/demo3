@@ -1,0 +1,13 @@
+
+<p>
+  <b>By:</b>
+  <%= comment.user.email %>
+</p>
+<p>
+  <b>Comment:</b>
+  <%= comment.comment %>
+</p>
+<p>
+  <b>@</b>
+  <%= time_ago_in_words(comment.created_at) %> ago
+</p>
